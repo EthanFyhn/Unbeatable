@@ -1,0 +1,271 @@
+:root {
+    scrollbar-color: #924b61 #220404;
+}
+
+* {
+    margin: 0;
+    --mainAccent: #ff467f;
+    --linkColor: #545d67;
+    --backgroundColor: #fcfacf;
+    --mainBlue: #7cd4f1;
+    --secondaryAccent: #e8bf19;
+}
+
+body {
+    font-family: "Londrina Solid", Helvetica, sans-serif;
+    background-image: linear-gradient(to left, #000, #1E1818);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#navBar {
+    background-color: var(--backgroundColor);
+    padding: 1em;
+    border: var(--mainAccent) 5px solid;
+}
+
+header {
+    display: flex;
+    align-items: center;
+
+    h2 {
+        transform: rotate(5deg);
+        transform-origin: right center;
+        text-align: right;
+        text-shadow: #0abdf04c 2px 2px 0px, #fe01014c -2px -2px 0px
+    }
+}
+
+#tagLine {
+    flex: 1;
+    align-items: center;
+}
+
+
+.interact {
+    color: var(--linkColor);
+    text-decoration: underline var(--mainBlue);
+    display: inline-block;
+
+    &:active {
+        color: var(--mainAccent);
+        transform: scale(1.1);
+        transition: transform 0.05s ease;
+    }
+
+    &:hover {
+        color: var(--mainAccent);
+        transform: scale(1.1);
+        transition: transform 0.15s ease;
+    }
+}
+
+li:nth-of-type(3) .interact {
+    color: var(--mainBlue);
+
+    &:hover {
+        color: var(--secondaryAccent);
+    }
+}
+
+.navLinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.25em;
+    text-decoration: none;
+    list-style-type: none;
+    flex-wrap: nowrap;
+}
+
+main {
+    flex: 1;
+    overflow: clip;
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    align-content: start;
+    gap: 0.5em;
+}
+
+div {
+    font-family: "Titillium Web", "Lodrina Solid", sans-serif;
+
+    &.card {
+        color: #924b61;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        padding: 10px;
+        background-color: var(--backgroundColor);
+        padding: 1em;
+        border: var(--mainAccent) 5px solid;
+        margin: 10px;
+        grid-row: 1;
+    }
+
+    &.albumInfo {
+        color: #924b61;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        padding: 10px;
+        background-color: var(--backgroundColor);
+        padding: 1em;
+        border: var(--mainAccent) 5px solid;
+        margin: 10px;
+        grid-row: 2;
+
+    }
+
+    >h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        text-align: center;
+        text-decoration: underline var(--mainAccent);
+        font-family: "Londrina Solid", "Titillium Web", sans-serif;
+    }
+
+}
+
+#beatBleh {
+    display: none;
+}
+
+#lightHouse {
+    border-radius: 10px;
+    grid-row: 2;
+    max-height: 100%;
+}
+
+#album {
+    position: relative;
+    margin: 10px;
+    grid-column: 1;
+    display: block;
+    width: min(100%, 350px);
+    height: auto;
+    margin: 0 auto;
+}
+
+.seperator {
+    height: 50px;
+    background-color: var(--mainAccent);
+    grid-column: 1 / 7;
+    grid-row: 2;
+}
+
+footer {
+    justify-content: center;
+    display: grid;
+    grid-template-rows: 25px 25px;
+    background-image: url(../media/pageBottom.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100px;
+    max-height: 182px;
+    flex-shrink: 0;
+    z-index: 1;
+
+    .navBottom {
+        position: relative;
+        bottom: -3em;
+        max-block-size: 20px;
+        grid-row: 1 / 2;
+
+        .interact {
+            color: var(--secondaryAccent);
+            text-decoration: underline var(--mainBlue);
+
+            &:hover {
+                color: var(--mainAccent);
+                transform: scale(1.1);
+                transition: transform 0.15s ease;
+            }
+        }
+    }
+
+    .references {
+        position: relative;
+        bottom: -3em;
+        max-block-size: 20px;
+        grid-row: 2 / 3;
+        color: var(--mainBlue);
+        text-decoration: underline var(--secondaryAccent);
+
+        li {
+            display: inline-block;
+            margin-right: 1em;
+            list-style-type: none;
+
+            &:visited {
+                color: var(--mainAccent);
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    main {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: auto auto;
+        align-content: start;
+
+        >.albumInfo {
+            grid-column: 1 / 5;
+            grid-row: 2;
+
+            .setlist {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5em;
+                grid-column: 5 / 7;
+                grid-row: 2;
+            }
+        }
+
+        body {
+            background-image: url(../media/background.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        >div {
+            &.card {
+                grid-column: 1 / 5;
+                grid-row: 1;
+            }
+
+            &.venues {
+                grid-column: 1 / 4;
+                grid-row: 2;
+
+                &:nth-of-type(even) {
+                    grid-column: 4 / 7;
+                }
+            }
+        }
+
+        img {
+            grid-column: 5 / 6;
+        }
+
+        #beatBleh {
+            display: block;
+            grid-column: 5 / 7;
+            grid-row: 1 / 2;
+            position: absolute;
+            inset: 10px 10px 10px 0;
+            width: calc(100% - 10px);
+            height: calc(100% - 20px);
+            object-fit: contain;
+            object-position: center bottom;
+        }
+    }
+}
